@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ServersService } from './servers.service';
 
 @Component({
   selector: 'app-servers',
@@ -6,15 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./servers.component.css']
 })
 export class ServersComponent implements OnInit {
-  servers: Array<{name:string, status:string}> = [
-    {name: 'Productionserver', status: 'Online'},
-     {name: 'Testserver', status: 'Offline'},
-      {name: 'Devserver', status: 'Online'}]; 
+  public servers: {id: number, name: string, status:string}[] = [];
 
-
-  constructor() { }
+  constructor(private serversService: ServersService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.servers = this.serversService.getServers();
+  }
+
+  onReload(){
+   // this.router.navigate(['servers'], {relativeTo: this.route}); //routerLink allways knows where you are , navigate doesn't so relative don't work on navigate ! // we can tell him relative <
+    
+
   }
 
 }

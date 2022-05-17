@@ -10,10 +10,14 @@ import { FormsModule } from '@angular/forms';
 import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
+import { ServersService } from './servers/servers.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }, //localhost:4200/users
   { path: 'users', component: UsersComponent },
+  // { path: 'users/1', component: UsersComponent },
+  // { path: 'users/2', component: UsersComponent }, better add peremeters =>
+  { path: 'users/:id/:name', component: UserComponent },
   { path: 'servers', component: ServersComponent }, 
 ];
 
@@ -32,7 +36,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [ServersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
