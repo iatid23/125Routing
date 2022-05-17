@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     { path: ':id', component: ServerComponent }
   ] },
   { path: 'not-found', component: PageNotFoundComponent},
-  { path: 'something', redirectTo: '/not-found' }
+  { path: '**', redirectTo: '/not-found', pathMatch: 'full' } //wild card - catch all you dont know  -  must be last in this list
 ];
 
 @NgModule({
