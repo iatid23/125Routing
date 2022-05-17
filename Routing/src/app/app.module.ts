@@ -25,7 +25,8 @@ const appRoutes: Routes = [
     
     { path: ':id/edit', component: EditServerComponent }, 
     { path: ':id', component: ServerComponent }
-  ] }
+  ] },
+  { path: 'something', component: PageNotFoundComponent}
 ];
 
 @NgModule({
