@@ -12,7 +12,8 @@ export class ServerComponent implements OnInit {
 
   constructor(
     private serverService: ServersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     
     ) {
       
@@ -27,6 +28,11 @@ export class ServerComponent implements OnInit {
 
       }
     );
+  }
+
+  onEdit(){
+    this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+
   }
  
 

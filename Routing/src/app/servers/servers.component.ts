@@ -11,8 +11,7 @@ export class ServersComponent implements OnInit {
   public servers: {id: number, name: string, status:string}[] = [];
 
   constructor(private serversService: ServersService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+   ) { }
 
   ngOnInit(): void {
     this.servers = this.serversService.getServers();
