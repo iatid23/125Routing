@@ -1,2 +1,10 @@
 <p>User with ID {{ user.id }} _ID_ loaded.</p>
 <p>User name is {{ user.name }}</p>
+<hr>
+<a [routerLink]="['/users', 10, 'Anna']">Load Anna (10)</a> 
+<!-- // will change route but not refresh the page  -->
+<!-- // we are loading using snapshot
+// when we are loading new route - angular goes to module to find the path directing to , loads the component
+// initialize it and give us the data by accssesing the snapshot
+// !! it happens just if we havnt been in this component while doing it 
+// so here it is not reloading just changing route  -->
