@@ -5,30 +5,18 @@ import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './home/home.component';
 import { ServersComponent } from './servers/servers.component';
-import { RouterModule, Routes } from '@angular/router';
+
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './app-routing-module';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent }, //localhost:4200/users
-  { path: 'users', component: UsersComponent, children: [
-    { path: ':id/:name', component: UserComponent }
-  ] },
-  // { path: 'users/1', component: UsersComponent },
-  // { path: 'users/2', component: UsersComponent }, better add peremeters =>
-  
-  { path: 'servers', component: ServersComponent, children: [
-    
-    { path: ':id/edit', component: EditServerComponent }, 
-    { path: ':id', component: ServerComponent }
-  ] },
-  { path: 'not-found', component: PageNotFoundComponent},
-  { path: '**', redirectTo: '/not-found', pathMatch: 'full' } //wild card - catch all you dont know  -  must be last in this list
-];
+
 
 @NgModule({
   declarations: [
@@ -39,14 +27,16 @@ const appRoutes: Routes = [
     UserComponent,
     EditServerComponent,
     ServerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+   
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
-  providers: [ServersService],
+  providers: [ServersService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
